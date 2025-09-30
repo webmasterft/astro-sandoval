@@ -1,7 +1,8 @@
 ---
-import { PRIMARY_MENU_QUERY } from '../../graphql/MainMenu';
 import { fetchGraphQL } from '../../services/wp-data';
+import { PRIMARY_MENU_QUERY } from '../../graphql/MainMenu';
 
+// Define the structure of a single navigation item for clarity
 type NavItem = {
     id: string;
     label: string;
@@ -19,33 +20,66 @@ type NavItem = {
     };
 };
 
+// 1. Fetch Data
 const result = await fetchGraphQL(PRIMARY_MENU_QUERY);
 const allNavItems: NavItem[] = result?.menuItems?.nodes ?? []; 
 
+// Filter for only top-level items (as children are nested via GraphQL)
 const navItems = allNavItems.filter(
-  item => item.parentDatabaseId === null || item.parentDatabaseId === 0
+    item => item.parentDatabaseId === null || item.parentDatabaseId === 0
 );
 
-console.log(navItems);
+// 2. Determine Current URL Path
+// Get the current path and normalize it (remove domain, remove trailing slash)
+const currentPath = Astro.url.pathname.replace(/\/$/, '');
+// Special handling for the root: if the path is empty (meaning just '/'), set it to '/'
+const normalizedCurrentPath = currentPath === '' ? '/' : currentPath;
+
+
+/**
+ * Helper function to normalize menu item paths for comparison.
+ * @param path The path or URI from the menu item.
+ * @returns The normalized path (e.g., '/acerca-de').
+ */
+const normalizeMenuItemPath = (path: string): string => {
+    // 1. Get the path part (removes domain if uri is used)
+    const url = new URL(path, 'http://dummy.com'); // Use a dummy base URL
+    let normalized = url.pathname.replace(/\/$/, ''); // Remove trailing slash
+    
+    // 2. Ensure the root is represented as '/'
+    return normalized === '' ? '/' : normalized;
+}
+
+// console.log(normalizedCurrentPath); // Debug: Check what the current path is
 ---
 
 <nav class="menu-menu-container">
   <ul id="menu-menu" class="nav-menu">
-    {navItems.map((item: NavItem) => (
-      <> 
-        <li class={`menu-item ${item.childItems?.nodes?.length > 0 ? 'menu-item-has-children' : ''}`}>
+    {navItems.map((item: NavItem) => {
+      const itemPath = normalizeMenuItemPath(item.path || item.uri);
+      const isActive = itemPath === normalizedCurrentPath;
+      const activeClass = isActive 
+        ? 'current-menu-item font-bold' 
+        : '';        
+      const hasChildrenClass = item.childItems?.nodes?.length > 0 ? 'menu-item-has-children' : '';
+      return (
+        <li class={`menu-item ${hasChildrenClass} ${activeClass}`}>
           <a href={item.uri}>{item.label}</a>
           {item.childItems?.nodes?.length > 0 && (
             <ul class="sub-menu">
-              {item.childItems.nodes.map((childItem: { uri: string; label: string }) => (
-                <li class="menu-item">
-                  <a href={childItem.uri}>{childItem.label}</a>
-                </li>
-              ))}
+              {item.childItems.nodes.map((childItem: NavItem['childItems']['nodes'][number]) => {
+                const isChildActive = normalizeMenuItemPath(childItem.path || childItem.uri) === normalizedCurrentPath;
+                const childActiveClass = isChildActive ? 'current-menu-item' : '';
+                return (
+                  <li class={`menu-item ${childActiveClass}`}>
+                    <a href={childItem.uri}>{childItem.label}</a>
+                  </li>
+                );
+              })}
             </ul>
           )}
         </li>
-      </>
-    ))}
+      );
+    })}
   </ul>
 </nav>
