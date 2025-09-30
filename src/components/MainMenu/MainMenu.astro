@@ -2,17 +2,50 @@
 import { PRIMARY_MENU_QUERY } from '../../graphql/MainMenu';
 import { fetchGraphQL } from '../../services/wp-data';
 
+type NavItem = {
+    id: string;
+    label: string;
+    uri: string;
+    path: string;
+    parentDatabaseId: number | null; 
+    childItems: {
+        nodes: Array<{ 
+            id: string; 
+            label: string; 
+            uri: string; 
+            path: string; 
+            parentDatabaseId: number | null; 
+        }>;
+    };
+};
+
 const result = await fetchGraphQL(PRIMARY_MENU_QUERY);
-const navItems = result?.menuItems?.nodes ?? [];
+const allNavItems: NavItem[] = result?.menuItems?.nodes ?? []; 
+
+const navItems = allNavItems.filter(
+  item => item.parentDatabaseId === null || item.parentDatabaseId === 0
+);
 
 console.log(navItems);
 ---
 
-
 <nav class="menu-menu-container">
   <ul id="menu-menu" class="nav-menu">
-    {navItems.map((item: { uri: string; label: string }) => (
-      <li class="menu-item"><a href={item.uri}>{item.label}</a></li>
+    {navItems.map((item: NavItem) => (
+      <> 
+        <li class={`menu-item ${item.childItems?.nodes?.length > 0 ? 'menu-item-has-children' : ''}`}>
+          <a href={item.uri}>{item.label}</a>
+          {item.childItems?.nodes?.length > 0 && (
+            <ul class="sub-menu">
+              {item.childItems.nodes.map((childItem: { uri: string; label: string }) => (
+                <li class="menu-item">
+                  <a href={childItem.uri}>{childItem.label}</a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      </>
     ))}
   </ul>
 </nav>

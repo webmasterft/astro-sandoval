@@ -4,18 +4,20 @@ export {};
 // Export the query as a string constant
 export const PRIMARY_MENU_QUERY = `
     query PrimaryMenuQuery {
-      menuItems(where: {location: PRIMARY}) {
+      menuItems(where: {location: PRIMARY}, first: 100) {
         nodes {
           id
           label
           uri
           path
+          parentDatabaseId 
           childItems {
             nodes {
               id
               label
               uri
               path
+              parentDatabaseId 
             }
           }
         }

@@ -1,12 +1,5 @@
 @import "tailwindcss";
+@import "./base/reset.css";
 @import "./base/theme.css";
-
-:root {
-  --color-primary: #0071b9;
-  --color-secondary: #0f4b91;
-  --color-tertiary: #41ba00;
-  --color-cuaternary: #41ba00d9;
-  --color-gray: #f8f8f8;
-  --color-darkgray: #0000004d;
-  --md: 1080px;
-}
+@import "./layout/header.css";
+@import "./layout/mainMenu.css";

@@ -9,6 +9,7 @@ const GRAPHQL_ENDPOINT = "https://drbernardosandoval.com/graphql";
  * @returns The data object from the GraphQL response.
  */
 export {};
+
 export async function fetchGraphQL(query: string): Promise<any> {
   try {
     const response = await fetch(GRAPHQL_ENDPOINT, {

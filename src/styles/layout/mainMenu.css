@@ -1,0 +1,99 @@
+@layer layout {
+  .nav-menu {
+    @apply flex flex-col gap-4 text-right;
+  }
+
+  .nav-menu li {
+    position: relative;
+  }
+
+  .nav-menu li a {
+    color: #0071b9;
+    font-weight: bold;
+    text-transform: uppercase;
+    &:hover {
+      color: #41ba00;
+      font-weight: bold;
+      transition: all 0.3s ease-out;
+    }
+  }
+
+  .nav-menu .current-menu-item,
+  .nav-menu .current-menu-parent {
+    color: #41ba00;
+    position: relative;
+  }
+
+  .nav-menu .current-menu-item > a,
+  .nav-menu .current-menu-parent > a {
+    color: #41ba00 !important;
+    font-weight: bold !important;
+  }
+  .nav-menu .menu-item-has-children:hover .sub-menu {
+    display: block;
+  }
+  // Submenu styles
+  .nav-menu .sub-menu li {
+    padding: 3px 0;
+  }
+
+  @media screen and (min-width: 1080px) {
+    .nav-menu {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      text-align: left;
+      li a {
+        color: #fff;
+        font-weight: 500;
+      }
+    }
+
+    // Submenu styles
+    .sub-menu {
+      display: none;
+      left: 0;
+      padding-top: 10px;
+      position: absolute;
+      width: 100%;
+      width: 200px;
+    }
+
+    .sub-menu {
+      display: none;
+      left: 0;
+      padding-top: 10px;
+      position: absolute;
+      width: 100%;
+      width: 200px;
+      &:before {
+        background: url(../../assets/triangulo-abajo.png) no-repeat center
+          center;
+        content: "";
+        height: 24px;
+        left: 0;
+        margin: 0 auto;
+        position: absolute;
+        right: 0;
+        top: 4px;
+        width: 28px;
+        z-index: 1;
+      }
+      li {
+        background: #0f4b91;
+        padding: 8px 15px;
+        width: 200px;
+        &:first-child {
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          padding-top: 20px;
+        }
+        &:last-child {
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          padding-bottom: 20px;
+        }
+      }
+    }
+  }
+}
