@@ -17,7 +17,7 @@ export async function fetchGraphQL(query: string): Promise<any> {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ query }),
+      body: JSON.stringify({ query: query }),
     });
 
     if (!response.ok) {

@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { fetchGraphQL } from '../services/wp-data'; 
+import { BIOGRAPHY_QUERY } from '../graphql/Biografia'; 
+
+const result = await fetchGraphQL(BIOGRAPHY_QUERY);
+console.log(JSON.stringify(result, null, 2));
+---
+
+<Layout>
+	<h1>Biografía</h1>
+</Layout>
