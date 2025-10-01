@@ -1,0 +1,5 @@
+@layer typography {
+  strong {
+    font-weight: bolder;
+  }
+}
