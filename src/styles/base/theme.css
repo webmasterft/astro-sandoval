@@ -7,4 +7,9 @@
   --color-gray: #f8f8f8;
   --color-darkgray: #0000004d;
   --md: 1080px;
+  --transition: transition-all duration-300 ease-out;
+}
+
+.container {
+  padding-inline: 30px;
 }

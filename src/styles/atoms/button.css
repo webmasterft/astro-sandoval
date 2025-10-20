@@ -1,0 +1,22 @@
+.btn {
+  @apply rounded-[10px] text-white inline-block text-[13px] font-bold mt-4 py-2 px-4 uppercase transition-all duration-300 ease-out;
+}
+
+.btn-primary {
+  @apply bg-primary hover:bg-tertiary;
+  &:hover {
+    @apply bg-tertiary transition;
+  }
+}
+.btn-secondary {
+  @apply bg-secondary hover:bg-cuaternary;
+  &:hover {
+    @apply bg-cuaternary transition;
+  }
+}
+.btn-tertiary {
+  @apply bg-tertiary hover:bg-primary;
+  &:hover {
+    @apply bg-primary transition;
+  }
+}

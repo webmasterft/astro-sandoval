@@ -22,76 +22,8 @@ console.log(bio);
         alt=""
         style="transition: opacity 0.5s; opacity: 1;"
       />
-      <div class="hidden md:block absolute right-0 bottom-0 z-0">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="320.784"
-          height="336"
-          viewBox="0 0 320.784 336"
-        >
-          <g id="Isotipo" transform="translate(-139 -27.841)">
-            <path
-              id="Trazado_115"
-              data-name="Trazado 115"
-              d="M2.632,109.457a9,9,0,0,0,10.553,1.6v.018l42.71-24.659,42.37-24.465-.018-.012a8.991,8.991,0,0,0,0-15.554l.018-.018L55.895,21.908,35.193,9.954A167.476,167.476,0,0,0,.034,76.479v25.837a8.979,8.979,0,0,0,2.6,7.141"
-              transform="translate(139 76.245)"
-              fill="#fff"></path>
-            <path
-              id="Trazado_116"
-              data-name="Trazado 116"
-              d="M105,78.646V30.49a8.993,8.993,0,0,0-13.15-8.735v-.023L49.144,46.4,6.768,70.855l.023.012a9,9,0,0,0,0,15.56l-.023.012L49.144,110.9l41.6,24.02v-.023a9,9,0,0,0,14.229-6.062l.035.023v-.317c.029-.293.047-.6.047-.9s-.018-.61-.047-.9Z"
-              transform="translate(150.241 128.583)"
-              fill="#fff"></path>
-            <path
-              id="Trazado_117"
-              data-name="Trazado 117"
-              d="M63.889,49.578a9.005,9.005,0,0,0-10.559-1.6v-.018l-42.7,24.659-.393.229a167.32,167.32,0,0,0,56.247,28.4V56.713a8.974,8.974,0,0,0-2.591-7.135"
-              transform="translate(188.759 256.111)"
-              fill="#fff"></path>
-            <path
-              id="Trazado_118"
-              data-name="Trazado 118"
-              d="M66.4,77.227v-.018a9,9,0,0,0,13.156-8.735V1.105A167.807,167.807,0,0,0,7.546,43.246l16.14,9.316Z"
-              transform="translate(175.693 33.215)"
-              fill="#fff"></path>
-            <path
-              id="Trazado_119"
-              data-name="Trazado 119"
-              d="M36.617,134.917l41.6-24.02,42.376-24.459-.023-.012a9,9,0,0,0,0-15.56l.023-.012L78.213,46.4,35.5,21.731v.023a8.993,8.993,0,0,0-13.15,8.735v96.243c-.029.293-.047.6-.047.9s.018.61.047.9v.317l.035-.023a9,9,0,0,0,14.229,6.062Z"
-              transform="translate(247.467 128.583)"
-              fill="#fff"></path>
-            <path
-              id="Trazado_120"
-              data-name="Trazado 120"
-              d="M35.492,47.958v.018a8.993,8.993,0,0,0-13.15,8.735v48a168.469,168.469,0,0,0,31.6,3.013,167.431,167.431,0,0,0,63.5-12.458L78.2,72.623Z"
-              transform="translate(247.477 256.112)"
-              fill="#fff"></path>
-            <path
-              id="Trazado_121"
-              data-name="Trazado 121"
-              d="M22.341,73.847A9,9,0,0,0,35.5,82.583V82.6l42.71-24.659,42.37-24.459-.023-.012a9,9,0,0,0,0-15.56l.023-.018-12.494-7.211A84.321,84.321,0,0,0,92.336,4.45C80.206.809,67.156,0,53.941,0a168.517,168.517,0,0,0-31.6,3.013V73.847Z"
-              transform="translate(247.479 27.841)"
-              fill="#fff"></path>
-            <path
-              id="Trazado_122"
-              data-name="Trazado 122"
-              d="M127.312,41.6l-.035.029a8.992,8.992,0,0,0-14.223-6.068l-.006-.023-41.6,24.02L29.076,84.021l.023.018a8.991,8.991,0,0,0,0,15.554l-.023.012,42.376,24.465,42.71,24.659v-.018a8.993,8.993,0,0,0,13.15-8.741V43.726c.029-.293.047-.6.047-.9a7.706,7.706,0,0,0-.047-.9Z"
-              transform="translate(258.72 192.348)"
-              fill="#fff"></path>
-            <path
-              id="Trazado_123"
-              data-name="Trazado 123"
-              d="M101.155,59.6l-.076-.047-41.6-24.014v.023a9,9,0,0,0-14.229,6.062l-.035-.023v.317c-.029.293-.047.6-.047.9s.018.61.047.9v92.889A168.266,168.266,0,0,0,101.155,59.6"
-              transform="translate(358.629 192.348)"
-              fill="#fff"></path>
-          </g>
-        </svg>
-      </div>
-      <p
-        class="text-tertiary font-bold text-[15px] leading-[17px] underline underline-offset-2 uppercase decoration-inherit md:pb-[40px] hidden md:block"
-      >
-        &gt; Biografía
-      </p>
+
+      
       <section
         class="content grid gap-[30px] md:grid-cols-2 md:gap-[60px] md:px-[50px]"
       >
@@ -132,213 +64,51 @@ console.log(bio);
               }
             )
           }
+          <div class="hidden md:flex gap-[10px]">
+            <a
+              class="w-[190px] md:w-auto btn btn-primary text-center"
+              href={bio.pdfBio.node.link}
+              target="_blank"
+            >
+              &gt; DESCARGA BIO (PDF)
+            </a>
+            <a class="w-[190px] md:w-auto btn btn-primary text-center" href="#">
+              &gt; contáctame
+            </a>
+          </div>
         </div>
-
-        <div class="hidden md:flex gap-[10px]">
-          <a
-            class="w-[190px] md:w-auto btn btn-primary text-center"
-            href="https://drbernardosandoval.com/wp-content/uploads/2024/10/Bio_DrSandoval_2024.pdf"
-            target="_blank"
-          >
-            &gt; DESCARGA BIO (PDF)
-          </a>
-          <a class="w-[190px] md:w-auto btn btn-primary text-center" href="#">
-            &gt; contáctame
-          </a>
+        <!--Left Column Content-->
+        <!--Right Column Content-->
+        <div>
+        {
+            bio.titulos.map(
+              (
+                Item: { credenciales: string; titulo: string },
+                index: number
+              ) => {
+                const { credenciales, titulo } = Item;
+                if (index > 0) {
+                  return (
+                    <div class="hidden md:block mt-[35px] md:mt-[25px] mb-[35px]  ">
+                      <p class="text-[16px] leading-[18px] md:text-[20px] md:leading-[24px] font-medium text-secondary mb-[10px] uppercase">
+                        {titulo}
+                      </p>
+                      <p class="md:text-[14px] md:leading-[16px] font-semibold text-primary  flex gap-[5px]">
+                        <span class="shrink-0 w-[30px]">
+                          <GreenCaretRight />
+                        </span>
+                        <span>{credenciales} </span>
+                      </p>
+                    </div>
+                  );
+                }
+                return null;
+              }
+            )
+          }  
         </div>
+        <!--Right Column Content-->
       </section>
-      <div class="md:hidden">
-        <div class="mb-[31px]">
-          <p
-            class="text-[16px] leading-[18px] font-medium text-secondary mb-[10px] uppercase"
-          >
-            Cirujano Oncólogo:
-          </p>
-          <p
-            class="text-[14px] leading-[16px] font-semibold text-primary flex gap-[5px]"
-          >
-            <span class="shrink-0 w-[30px]">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="26.958"
-                height="30.107"
-                viewBox="0 0 26.958 30.107"
-              >
-                <path
-                  id="Trazado_114"
-                  data-name="Trazado 114"
-                  d="M25.643,47.348l9.7-5.6,9.882-5.7-.005,0a2.1,2.1,0,0,0,0-3.628l.005,0-9.882-5.7-9.96-5.752v.005A2.1,2.1,0,0,0,22.317,23V45.439c-.007.068-.011.139-.011.211s0,.142.011.211v.074l.008-.005a2.1,2.1,0,0,0,3.318,1.414Z"
-                  transform="translate(-20.806 -19.14)"
-                  fill="none"
-                  stroke="#41ba00"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="3"></path>
-              </svg>
-            </span>
-            <span>
-              Memorial Sloan-Kettering Cancer Center De Nueva York (2007-2008).
-              Registro SENESCYT Y CONESUP 1041R – 09-5794
-            </span>
-          </p>
-        </div>
-        <div class="mb-[31px]">
-          <p
-            class="text-[16px] leading-[18px] font-medium text-secondary mb-[10px] uppercase"
-          >
-            Cirujano Torácico:
-          </p>
-          <p
-            class="text-[14px] leading-[16px] font-semibold text-primary flex gap-[5px]"
-          >
-            <span class="shrink-0 w-[30px]">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="26.958"
-                height="30.107"
-                viewBox="0 0 26.958 30.107"
-              >
-                <path
-                  id="Trazado_114"
-                  data-name="Trazado 114"
-                  d="M25.643,47.348l9.7-5.6,9.882-5.7-.005,0a2.1,2.1,0,0,0,0-3.628l.005,0-9.882-5.7-9.96-5.752v.005A2.1,2.1,0,0,0,22.317,23V45.439c-.007.068-.011.139-.011.211s0,.142.011.211v.074l.008-.005a2.1,2.1,0,0,0,3.318,1.414Z"
-                  transform="translate(-20.806 -19.14)"
-                  fill="none"
-                  stroke="#41ba00"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="3"></path>
-              </svg>
-            </span>
-            <span>
-              American Board Of Thoracic Surgery. University Of Texas
-              Southwestern Medical Center, Dallas, Texas. (1998-2001). Registro
-              SENESCYT Y CONESUP 1041R – 09 - 5795
-            </span>
-          </p>
-        </div>
-        <div class="mb-[31px]">
-          <p
-            class="text-[16px] leading-[18px] font-medium text-secondary mb-[10px] uppercase"
-          >
-            Cirujano General:
-          </p>
-          <p
-            class="text-[14px] leading-[16px] font-semibold text-primary flex gap-[5px]"
-          >
-            <span class="shrink-0 w-[30px]">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="26.958"
-                height="30.107"
-                viewBox="0 0 26.958 30.107"
-              >
-                <path
-                  id="Trazado_114"
-                  data-name="Trazado 114"
-                  d="M25.643,47.348l9.7-5.6,9.882-5.7-.005,0a2.1,2.1,0,0,0,0-3.628l.005,0-9.882-5.7-9.96-5.752v.005A2.1,2.1,0,0,0,22.317,23V45.439c-.007.068-.011.139-.011.211s0,.142.011.211v.074l.008-.005a2.1,2.1,0,0,0,3.318,1.414Z"
-                  transform="translate(-20.806 -19.14)"
-                  fill="none"
-                  stroke="#41ba00"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="3"></path>
-              </svg>
-            </span>
-            <span>
-              American Board Of Surgery. Case Western Reserve University,
-              Cleveland, Ohio. (1991-1998). Registro SENESCYT Y CONESUP 1041R –
-              09 - 5796
-            </span>
-          </p>
-        </div>
-      </div>
-      <div class="hidden md:block">
-        <div class="w-[36px] h-[5px] my-[30px]"></div>
-        <div class="mb-[20px]">
-          <p
-            class="text-[20px] leading-[24px] font-medium text-secondary mb-[10px] uppercase"
-          >
-            Cirujano Torácico:
-          </p>
-          <p
-            class="text-[14px] leading-[16px] font-semibold text-primary flex gap-[5px]"
-          >
-            <span class="shrink-0 w-[30px]">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="26.958"
-                height="30.107"
-                viewBox="0 0 26.958 30.107"
-              >
-                <path
-                  id="Trazado_114"
-                  data-name="Trazado 114"
-                  d="M25.643,47.348l9.7-5.6,9.882-5.7-.005,0a2.1,2.1,0,0,0,0-3.628l.005,0-9.882-5.7-9.96-5.752v.005A2.1,2.1,0,0,0,22.317,23V45.439c-.007.068-.011.139-.011.211s0,.142.011.211v.074l.008-.005a2.1,2.1,0,0,0,3.318,1.414Z"
-                  transform="translate(-20.806 -19.14)"
-                  fill="none"
-                  stroke="#41ba00"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="3"></path>
-              </svg>
-            </span>
-            <span>
-              American Board Of Thoracic Surgery. University Of Texas
-              Southwestern Medical Center, Dallas, Texas. (1998-2001). Registro
-              SENESCYT Y CONESUP 1041R – 09 - 5795
-            </span>
-          </p>
-        </div>
-        <div class="mb-[20px]">
-          <p
-            class="text-[20px] leading-[24px] font-medium text-secondary mb-[10px] uppercase"
-          >
-            Cirujano General:
-          </p>
-          <p
-            class="text-[14px] leading-[16px] font-semibold text-primary flex gap-[5px]"
-          >
-            <span class="shrink-0 w-[30px]">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="26.958"
-                height="30.107"
-                viewBox="0 0 26.958 30.107"
-              >
-                <path
-                  id="Trazado_114"
-                  data-name="Trazado 114"
-                  d="M25.643,47.348l9.7-5.6,9.882-5.7-.005,0a2.1,2.1,0,0,0,0-3.628l.005,0-9.882-5.7-9.96-5.752v.005A2.1,2.1,0,0,0,22.317,23V45.439c-.007.068-.011.139-.011.211s0,.142.011.211v.074l.008-.005a2.1,2.1,0,0,0,3.318,1.414Z"
-                  transform="translate(-20.806 -19.14)"
-                  fill="none"
-                  stroke="#41ba00"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="3"></path>
-              </svg>
-            </span>
-            <span>
-              American Board Of Surgery. Case Western Reserve University,
-              Cleveland, Ohio. (1991-1998). Registro SENESCYT Y CONESUP 1041R –
-              09 - 5796
-            </span>
-          </p>
-        </div>
-      </div>
-
-      <div class="block md:hidden pb-[50px]">
-        <a
-          class="w-[190px] md:w-auto btn btn-primary text-center"
-          href="https://drbernardosandoval.com/wp-content/uploads/2024/10/Bio_DrSandoval_2024.pdf"
-          target="_blank"
-        >
-          &gt; DESCARGA BIO (PDF)
-        </a>
-        <a class="w-[190px] md:w-auto btn btn-primary text-center" href="#">
-          &gt; contáctame
-        </a>
-      </div>
     </div>
   </section>
 </Layout>
