@@ -1,7 +1,7 @@
 // src/services/wp-data.ts
 
-// Define your GraphQL endpoint
-const GRAPHQL_ENDPOINT = "https://drbernardosandoval.com/graphql";
+// Define your GraphQL endpoint from environment variable
+const GRAPHQL_ENDPOINT = import.meta.env.PUBLIC_GRAPHQL_ENDPOINT;
 
 /**
  * Fetches data using a standard GraphQL POST request.
