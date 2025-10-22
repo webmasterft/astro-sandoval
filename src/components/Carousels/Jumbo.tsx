@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import { Pagination, A11y } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -25,7 +25,7 @@ export default function SwiperCarousel({ data }: Props) {
       spaceBetween={50}
       slidesPerView={1}
       className="jumbo md:h-[500px]"
-      modules={[Pagination]}
+      modules={[Pagination, A11y]}
       pagination={{ clickable: true }}
     >
       {data?.map((slide, index) => (
@@ -37,6 +37,8 @@ export default function SwiperCarousel({ data }: Props) {
               width="100%"
               height="500px"
               className="h-auto md:absolute md:top-0 md:left-0 md:z-0 md:h-full md:object-cover"
+              loading={index === 0 ? "eager" : "lazy"}
+              fetchPriority={index === 0 ? "high" : "low"}
             />
           )}
           <div className="container content h-full relative z-10 w-full mt-[30px] md:-mt-0 md:flex md:justify-end md:items-end flex-wrap flex-col">
