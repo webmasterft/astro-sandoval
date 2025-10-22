@@ -10,6 +10,12 @@ interface Slide {
       altText?: string;
     };
   };
+  imagenDeFondoMobile?: {
+    node?: {
+      mediaItemUrl?: string;
+      altText?: string;
+    };
+  };
   titulo?: string;
   subtitulo?: string;
   descripcion?: string;
@@ -31,15 +37,21 @@ export default function SwiperCarousel({ data }: Props) {
       {data?.map((slide, index) => (
         <SwiperSlide key={index} className="w-full">
           {slide?.imagenDeFondoDesktop?.node?.mediaItemUrl && (
-            <img
-              src={slide.imagenDeFondoDesktop.node.mediaItemUrl}
-              alt={slide.imagenDeFondoDesktop.node.altText || ""}
-              width="100%"
-              height="500px"
-              className="h-auto md:absolute md:top-0 md:left-0 md:z-0 md:h-full md:object-cover"
-              loading={index === 0 ? "eager" : "lazy"}
-              fetchPriority={index === 0 ? "high" : "low"}
-            />
+            <picture>
+              <source
+                media="(min-width:767px)"
+                srcSet={slide.imagenDeFondoDesktop?.node?.mediaItemUrl}
+              ></source>
+              <img
+                src={slide.imagenDeFondoMobile?.node?.mediaItemUrl}
+                alt={slide.imagenDeFondoMobile?.node?.altText || ""}
+                width="100%"
+                height="500px"
+                className="h-[400px] object-cover md:absolute md:top-0 md:left-0 md:z-0 md:h-full"
+                loading={index === 0 ? "eager" : "lazy"}
+                fetchPriority={index === 0 ? "high" : "low"}
+              />
+            </picture>
           )}
           <div className="container content h-full relative z-10 w-full mt-[30px] md:-mt-0 md:flex md:justify-end md:items-end flex-wrap flex-col">
             <div className="text-center md:text-left w-full md:min-h-[235px] md:max-w-[400px] mb-[50px]">
