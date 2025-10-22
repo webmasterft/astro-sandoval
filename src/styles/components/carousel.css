@@ -1,0 +1,16 @@
+.swiper {
+}
+
+.swiper-wrapper {
+  @apply flex;
+}
+
+.jumbo {
+  @apply w-full relative;
+  .swiper-wrapper {
+    @apply w-full  relative md:h-[500px];
+    .swiper-slide {
+      @apply w-full h-full relative shrink-0;
+    }
+  }
+}

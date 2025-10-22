@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { fetchGraphQL } from "../services/wp-data";
 import { HOME_QUERY } from "../graphql/Home";
 
-import SwiperCarousel from '../components/Sliders/Jumbo';
+import JumboCarousel from '../components/Carousels/Jumbo';
 interface Slide {
   boton?: {
     target?: string;
@@ -42,6 +42,5 @@ console.log(homeLayouts?.[0]?.slide);
 
 
 <Layout>
-	<h1>Welcome to the Home Page</h1>
-	<SwiperCarousel client:load />
+	<JumboCarousel client:load data={homeLayouts?.[0]?.slide}/>
 </Layout>

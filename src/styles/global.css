@@ -3,4 +3,5 @@
 @import "./base/typography.css";
 @import "./layout/header.css";
 @import "./components/mainMenu.css";
+@import "./components/carousel.css";
 @import "./atoms/button.css";
