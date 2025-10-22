@@ -5,10 +5,7 @@ import { BIOGRAPHY_QUERY } from "../graphql/Biografia";
 import GreenCaretRight from "../assets/svg/green-caret-right.svg";
 
 const result = await fetchGraphQL(BIOGRAPHY_QUERY);
-// If you want to log the raw data, you can stringify it for debugging
 const bio = result?.page?.bio?.bio;
-
-console.log(bio);
 ---
 
 <Layout>
@@ -29,42 +26,44 @@ console.log(bio);
       >
         <div>
           <div class="bg-primary w-[36px] h-[5px] my-[30px]"></div>
-          <p
-            class="text-[34px] leading-[38px] md:text-[44px] md:leading-[48px] mb-[25px] text-primary"
-            set:html={bio.titulo}
-          />
-          <p
-            class="text-[14px] leading-[16px] md:text-[18px] md:leading-[22px] font-extrabold text-primary"
-            set:html={bio.subtitulo}
-          />
+          {bio?.titulo && (
+            <p
+              class="text-[34px] leading-[38px] md:text-[44px] md:leading-[48px] mb-[25px] text-primary"
+              set:html={bio.titulo}
+            />
+          )}
+          {bio?.subtitulo && (
+            <p
+              class="text-[14px] leading-[16px] md:text-[18px] md:leading-[22px] font-extrabold text-primary"
+              set:html={bio.subtitulo}
+            />
+          )}
 
-          {
-            bio.titulos.map(
-              (
-                Item: { credenciales: string; titulo: string },
-                index: number
-              ) => {
-                const { credenciales, titulo } = Item;
-                if (index === 0) {
-                  return (
-                    <div class="hidden md:block mt-[35px] md:mt-[25px] mb-[35px]  ">
-                      <p class="text-[16px] leading-[18px] md:text-[20px] md:leading-[24px] font-medium text-secondary mb-[10px] uppercase">
-                        {titulo}
-                      </p>
-                      <p class="md:text-[14px] md:leading-[16px] font-semibold text-primary  flex gap-[5px]">
-                        <span class="shrink-0 w-[30px]">
-                          <GreenCaretRight />
-                        </span>
-                        <span>{credenciales} </span>
-                      </p>
-                    </div>
-                  );
-                }
-                return null;
+          {bio?.titulos?.map && bio.titulos.map(
+            (
+              Item: { credenciales: string; titulo: string },
+              index: number
+            ) => {
+              const { credenciales, titulo } = Item;
+              if (index === 0) {
+                return (
+                  <div class="hidden md:block mt-[35px] md:mt-[25px] mb-[35px]  ">
+                    <p class="text-[16px] leading-[18px] md:text-[20px] md:leading-[24px] font-medium text-secondary mb-[10px] uppercase">
+                      {titulo}
+                    </p>
+                    <p class="md:text-[14px] md:leading-[16px] font-semibold text-primary  flex gap-[5px]">
+                      <span class="shrink-0 w-[30px]">
+                        <GreenCaretRight />
+                      </span>
+                      <span>{credenciales} </span>
+                    </p>
+                  </div>
+                );
               }
-            )
-          }
-          <div class="hidden md:flex gap-[10px]">
+              return null;
+            }
+          )}
+          {bio?.pdfBio?.node?.link && (
             <a
               class="w-[190px] md:w-auto btn btn-primary text-center"
               href={bio.pdfBio.node.link}
@@ -72,6 +71,8 @@ console.log(bio);
             >
               &gt; DESCARGA BIO (PDF)
             </a>
+          )}
+          <div class="hidden md:flex gap-[10px]">
             <a class="w-[190px] md:w-auto btn btn-primary text-center" href="#">
               &gt; contáctame
             </a>
@@ -81,7 +82,7 @@ console.log(bio);
         <!--Right Column Content-->
         <div>
         {
-            bio.titulos.map(
+            bio?.titulos?.map && bio.titulos.map(
               (
                 Item: { credenciales: string; titulo: string },
                 index: number

@@ -1,7 +1,45 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { fetchGraphQL } from "../services/wp-data";
+import { HOME_QUERY } from "../graphql/Home";
+
 import SwiperCarousel from '../components/Sliders/Jumbo';
+interface Slide {
+  boton?: {
+    target?: string;
+    title?: string;
+    url?: string;
+  };
+  descripcion?: string;
+  imagenDeFondoDesktop?: {
+    node?: {
+      altText?: string;
+      mediaItemUrl?: string;
+    };
+  };
+  imagenDeFondoMobile?: {
+    node?: {
+      altText?: string;
+      mediaItemUrl?: string;
+    };
+  };
+  titulo?: string;
+  subtitulo?: string;
+  // Add other properties as needed
+}
+
+interface HomeLayout {
+  fieldGroupName?: string;
+  slide?: Slide[];
+}
+const result = await fetchGraphQL(HOME_QUERY);
+const homeLayouts = Array.isArray(result?.page?.home?.home)
+  ? result.page.home.home.filter((h: HomeLayout) => h && h.slide)
+  : [];
+console.log(homeLayouts?.[0]?.slide);
 ---
+
+
 
 <Layout>
 	<h1>Welcome to the Home Page</h1>

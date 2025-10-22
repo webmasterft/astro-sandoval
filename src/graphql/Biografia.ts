@@ -1,31 +1,15 @@
 export {};
-// Export the query as a string constant
+import { METADATA_FRAGMENT } from "./fragments/metadata";
 export const BIOGRAPHY_QUERY = `
+${METADATA_FRAGMENT}
     query BiographyContent {
   page(id: "/biografia/", idType: URI) {
     title
     content(format: RENDERED)
     seo {
-          title
-          metaDesc
-          canonical
-          opengraphTitle
-          opengraphDescription
-          opengraphImage {
-            mediaItemUrl
-          }
-          # Include Twitter Card data if you use it
-          twitterTitle
-          twitterDescription
-          twitterImage {
-            mediaItemUrl
-          }
-          # You can add the full breadcrumbs if needed
-          breadcrumbs {
-            text
-            url
-          }
+      ...MetadataFields
     }
+    
     bio {
       bio {
         boton {
