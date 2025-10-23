@@ -4,6 +4,7 @@ import { fetchGraphQL } from "../services/wp-data";
 import { HOME_QUERY } from "../graphql/Home";
 
 import JumboCarousel from '../components/Carousels/Jumbo';
+import Procedimientos from '../components/Carousels/Procedimientos';
 interface Slide {
   boton?: {
     target?: string;
@@ -36,11 +37,12 @@ const result = await fetchGraphQL(HOME_QUERY);
 const homeLayouts = Array.isArray(result?.page?.home?.home)
   ? result.page.home.home.filter((h: HomeLayout) => h && h.slide)
   : [];
-console.log(homeLayouts?.[0]?.slide);
+//console.log(homeLayouts?.[0]?.slide);
 ---
 
 
 
 <Layout>
 	<JumboCarousel client:load data={homeLayouts?.[0]?.slide}/>
+	<Procedimientos client:visible/>
 </Layout>

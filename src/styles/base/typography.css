@@ -2,4 +2,7 @@
   strong {
     font-weight: bolder;
   }
+  .section-title {
+    @apply text-tertiary font-bold text-[0.875rem] leading-4 uppercase;
+  }
 }
