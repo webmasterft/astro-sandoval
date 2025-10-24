@@ -2,9 +2,13 @@ import { useEffect, useState } from "react";
 import { fetchGraphQL } from "../../services/wp-data";
 import { CAROUSEL_PROCEDIMIENTOS_QUERY } from "../../graphql/Carousel-procedimientos";
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import { Navigation, A11y } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+
+// Import plus.svg from public folder
+const plusIcon = "/plus.svg";
 
 // Item structure
 export type ProcedimientoItem = {
@@ -53,47 +57,70 @@ export default function Procedimientos() {
 
   return (
     <section className="container">
-      <h2 className="section-title text-center py-6">Mis servicios:</h2>
+      <h2 className="section-title text-center pt-6">Mis servicios:</h2>
       <Swiper
         modules={[Navigation, A11y]}
         spaceBetween={50}
-        slidesPerView={1}
+        slidesPerView={6}
+        navigation={true}
+        loop={true}
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          640: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 10,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 10,
+          },
+          1280: {
+            slidesPerView: 6,
+            spaceBetween: 10,
+          },
+        }}
         className=" "
       >
         {data.map((item, index) => (
           <SwiperSlide key={index} className="w-full">
-            {item?.imagenProcedimientos?.node?.mediaItemUrl && (
-              <picture>
+            <a
+              className="flex flex-col items-center max-w-[122px] text-center hover:text-tertiary"
+              href={item.boton?.url}
+            >
+              <img
+                src={plusIcon}
+                alt="plus"
+                width="30 "
+                height="82"
+                className="mt-2"
+              />
+              <p className="text-primary text-[16px] leading-[18px] md:text-[18px] md:leading-[20px] font-bold mb-[10px] -mt-[5px] uppercase h-[60px] overflow-hidden">
+                <span
+                  dangerouslySetInnerHTML={{ __html: item.titulo || "" }}
+                ></span>
+              </p>
+              {item?.imagenProcedimientos?.node?.mediaItemUrl && (
                 <img
                   src={item.imagenProcedimientos.node.mediaItemUrl}
                   alt={item.titulo || ""}
-                  width="100%"
-                  height="500px"
-                  className="h-[400px] object-cover md:absolute md:top-0 md:left-0 md:z-0 md:h-full"
-                  loading={index === 0 ? "eager" : "lazy"}
-                  fetchPriority={index === 0 ? "high" : "low"}
+                  width="122px"
+                  height="126px"
+                  className="h-[126px] object-cover rounded-md"
+                  loading="lazy"
                 />
-              </picture>
-            )}
-            <div className="container content h-full relative z-10 w-full mt-[30px] md:-mt-0 md:flex md:justify-end md:items-end flex-wrap flex-col">
-              <div className="text-center md:text-left w-full md:min-h-[235px] md:max-w-[400px] mb-[50px]">
-                {item?.titulo && (
-                  <h2 className="text-primary text-[30px] leading-[36px] md:text-[44px] md:leading-[48px] font-bold mb-[10px]">
-                    {item.titulo}
-                  </h2>
-                )}
-                {/* boton example usage */}
-                {item?.boton?.title && (
-                  <a
-                    href={item.boton.url}
-                    target={item.boton.target}
-                    className="btn"
-                  >
-                    {item.boton.title}
-                  </a>
-                )}
-              </div>
-            </div>
+              )}
+            </a>
           </SwiperSlide>
         ))}
       </Swiper>
