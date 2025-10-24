@@ -28,9 +28,10 @@ export interface Props {
 export default function SwiperCarousel({ data }: Props) {
   return (
     <Swiper
+      id="carousel-jumbo"
       spaceBetween={50}
       slidesPerView={1}
-      className="jumbo md:h-[500px]"
+      className="md:h-[500px]"
       modules={[Pagination, A11y]}
       pagination={{ clickable: true }}
     >

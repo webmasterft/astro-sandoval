@@ -5,7 +5,7 @@
   @apply flex;
 }
 
-.jumbo {
+#carousel-jumbo {
   @apply w-full relative;
   .swiper-wrapper {
     @apply w-full  relative md:h-[500px];
@@ -13,4 +13,8 @@
       @apply w-full h-full relative shrink-0;
     }
   }
+}
+
+#carousel-procedimientos- {
+  @apply justify-center;
 }

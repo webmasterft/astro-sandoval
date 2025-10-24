@@ -59,41 +59,32 @@ export default function Procedimientos() {
     <section className="container">
       <h2 className="section-title text-center pt-6">Mis servicios:</h2>
       <Swiper
+        id="carousel-procedimientos-"
         modules={[Navigation, A11y]}
         spaceBetween={50}
-        slidesPerView={6}
+        slidesPerView={2}
         navigation={true}
         loop={true}
         breakpoints={{
-          320: {
-            slidesPerView: 1,
-            spaceBetween: 10,
-          },
           480: {
-            slidesPerView: 2,
-            spaceBetween: 10,
-          },
-          640: {
             slidesPerView: 3,
-            spaceBetween: 10,
+            spaceBetween: 0,
           },
+
           768: {
             slidesPerView: 4,
-            spaceBetween: 10,
           },
           1024: {
-            slidesPerView: 5,
-            spaceBetween: 10,
-          },
-          1280: {
             slidesPerView: 6,
-            spaceBetween: 10,
           },
         }}
         className=" "
       >
         {data.map((item, index) => (
-          <SwiperSlide key={index} className="w-full">
+          <SwiperSlide
+            key={index}
+            className="w-full flex justify-center items-center"
+          >
             <a
               className="flex flex-col items-center max-w-[122px] text-center hover:text-tertiary"
               href={item.boton?.url}
